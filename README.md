@@ -281,7 +281,7 @@
     git push pws master
     ```
 
-13. Setelah menjalankan perintah tersebut, kamu akan diminta `username` dan `password`. Gunakan _Project Credentials_ yang telah kamu simpan (ingat kembali langkah 45).
+13. Setelah menjalankan perintah tersebut, kamu akan diminta `username` dan `password`. Gunakan _Project Credentials_ yang telah kamu simpan (lihat kembali langkah 10).
 14. Setelah menjalankan perintah tersebut, silahkan kembalikan branch ke main dengan perintah berikut :
     ```bash
     git branch -M main
@@ -291,7 +291,7 @@
 
 ### 2. Bagan _request client_ Django
 
-![Bagan request Django](https://cdn.discordapp.com/attachments/1215508424339750952/1283263912166297651/IMG_20240911_101230.jpg?ex=66e25c26&is=66e10aa6&hm=814fa472fe2734a6542daf19af641a2c016ad7ea2841fdfa8c25e434e8d45d76&)
+![Bagan request Django](https://media.discordapp.net/attachments/1215508424339750952/1283263912166297651/IMG_20240911_101230.jpg?ex=66eaede6&is=66e99c66&hm=c0b3d47b5b58f067dab53e2ac4eb749bf3e907b14aa80d74754b1ab6f4d6a7d9&=&format=webp&width=916&height=591)
 
 Bagan di atas menjelaskan siklus request-response dalam aplikasi web Django. Berikut penjelasan tentang hubungan antara urls.py, views.py, models.py, dan berkas HTML dalam proses tersebut:
 

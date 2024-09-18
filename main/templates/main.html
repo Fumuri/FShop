@@ -1,6 +1,41 @@
-<h1>{{ app }}</h1>
-
+{% extends 'base.html' %}
+{% block content %}
+<h1>FShop/<h1>
+    
+<h5>NPM: </h5>
+<p>{{ npm }}<p>
 <h5>Name: </h5>
-<p>{{ name }}</p> 
+<p>{{ name }}<p>
 <h5>Class: </h5>
-<p>{{ class }}</p> 
+<p>{{ class }}<p>
+
+{% if not isi_product %}
+<p>Tidak ada/belum ada product yang dijual pada FShop.</p>
+{% else %}
+<table>
+    <tr>
+    <th>Product Name</th>
+    <th>Price</th>
+    <th>Description</th>
+    <th>Quantity</th>
+    </tr>
+
+    {% comment %} Cara memperlihatkan data produk
+    {% endcomment %} 
+    {% for isian_product in isi_product %}
+    <tr>
+    <td>{{isian_product.name}}</td>
+    <td>{{isian_product.price}}</td>
+    <td>{{isian_product.description}}</td>
+    <td>{{isian_product.quantity}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+<br />
+    
+<a href="{% url 'main:create_product' %}">
+    <button>Tambahkan Product</button>
+</a>
+{% endblock content %}\
