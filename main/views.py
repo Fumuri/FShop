@@ -21,7 +21,7 @@ def show_main(request):
         'npm': '2306226731',
         'name': request.user.username,
         'class': 'PBP C',
-        'products' : isi_product,
+        'isi_product' : isi_product,
         'last_login': request.COOKIES['last_login'],
     }
 
@@ -31,9 +31,9 @@ def create_product(request):
     form = ProductForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST" :
-        product_entry = form.save(commit = False)
-        product_entry.user = request.user
-        product_entry.save()
+        isian_product = form.save(commit = False)
+        isian_product.user = request.user
+        isian_product.save()
         return redirect('main:show_main')
 
     context = {'form': form}

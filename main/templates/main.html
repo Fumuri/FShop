@@ -14,20 +14,20 @@
 {% else %}
 <table>
     <tr>
-    <th>Product Name</th>
-    <th>Price</th>
-    <th>Description</th>
-    <th>Quantity</th>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Quantity</th>
     </tr>
 
     {% comment %} Cara memperlihatkan data produk
     {% endcomment %} 
     {% for isian_product in isi_product %}
     <tr>
-    <td>{{isian_product.name}}</td>
-    <td>{{isian_product.price}}</td>
-    <td>{{isian_product.description}}</td>
-    <td>{{isian_product.quantity}}</td>
+        <td>{{isian_product.name}}</td>
+        <td>{{isian_product.price}}</td>
+        <td>{{isian_product.description}}</td>
+        <td>{{isian_product.quantity}}</td>
     </tr>
     {% endfor %}
 </table>
