@@ -393,7 +393,7 @@ Kita membutuhkan csrf_token saat membuat form di Django untuk melindungi aplikas
         return redirect('/some-url/')  # Bisa dengan URL langsung
     ```
 
-Kesimpulannya adalah `HttpResponseRedirect()` digunakan ketika Anda ingin mengarahkan pengguna ke URL tertentu yang Anda tentukan secara eksplisit dan `redirect()` adalah versi yang lebih fleksibel dan user-friendly karena dapat menerima URL, pola URL, atau objek model. `redirect` lebih sering digunakan karena lebih mudah dan fleksibel.
+Kesimpulannya adalah `HttpResponseRedirect()` digunakan ketika kita ingin mengarahkan pengguna ke URL tertentu yang kita tentukan secara eksplisit dan `redirect()` adalah versi yang lebih fleksibel dan user-friendly karena dapat menerima URL, pola URL, atau objek model. `redirect` lebih sering digunakan karena lebih mudah dan fleksibel.
 
 ### 2. Jelaskan cara kerja penghubungan model Product dengan User!
 
@@ -557,3 +557,94 @@ Jika cookies dikirim tanpa enkripsi (misalnya melalui HTTP, bukan HTTPS), mereka
 
 5. Cookie Overload:
 Terlalu banyak menggunakan cookies dapat membebani bandwidth dan memperlambat situs web, terutama jika data yang disimpan dalam cookie besar dan tidak dikelola dengan baik.
+
+## Tugas Individu 5
+
+### 1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+
+1. Inline styles, yaitu CSS yang ditulis langsung pada elemen HTML menggunakan atribut `style=""` akan selalu memiliki prioritas tertinggi.
+
+Contoh: 
+`<div style="color: red;"></div>`
+
+2. ID selectors, yaitu selektor yang merujuk ke elemen berdasarkan atribut `id`. Setiap kali selektor menggunakan `#id`, ia lebih kuat dibandingkan kelas atau elemen.
+
+Contoh:
+`#header { color: blue; }`
+    
+
+3. Class selectors, attribute selectors, dan pseudo-class selectors, yaitu selektor yang menggunakan kelas `(.class)`, atribut `([type="text"])`, atau pseudo-class (`:hover`, `:focus`, dll.) memiliki prioritas lebih rendah daripada ID, tetapi lebih tinggi daripada elemen.
+    
+
+Contoh:
+`.btn { color: green; }`
+`[type="text"] { background: yellow; }`
+`a:hover { text-decoration: underline; }`
+
+4. Element selectors dan pseudo-elements, yaitu selektor yang merujuk ke elemen HTML (misalnya `div`, `p`, `h1`, dll.) dan pseudo-elemen seperti `::before`, `::after` memiliki prioritas paling rendah.
+
+Contoh:
+`p { font-size: 16px; }`
+`::before { content: ''; }`
+
+### 2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+
+Responsive design adalah konsep penting dalam pengembangan aplikasi web karena memastikan bahwa aplikasi atau situs web dapat beradaptasi dengan berbagai ukuran layar dan perangkat (seperti ponsel, tablet, dan desktop). Hal ini berguna untuk memberikan pengalaman pengguna yang optimal tanpa harus membuat versi terpisah untuk setiap jenis perangkat.
+Contoh aplikasi yang sudah menerapkan responsive design :
+
+1. **YouTube**, menyesuaikan tampilan video dan elemen navigasi berdasarkan ukuran layar. Di desktop, YouTube menampilkan sidebar dan tata letak lebar, sementara pada perangkat mobile, tata letaknya berubah menjadi lebih vertikal dan elemen-elemen menjadi lebih besar untuk kemudahan sentuhan.
+
+2. **Spotify**, menyediakan tampilan yang responsif untuk platform web-nya. Ketika diakses melalui desktop, tampilan lebih lengkap dengan kontrol yang lebar dan sidebar navigasi. Pada perangkat mobile, elemen-elemen seperti tombol play, pause, dan navigasi lagu lebih besar dan mudah dijangkau dengan jari.
+
+Contoh aplikasi yang belum menerapkan responsive design :
+
+1. Situs Web Toko Online Lama, yang masih menggunakan desain lama mungkin belum responsif. Pengguna harus melakukan zoom in/out dan scroll horizontal saat mengakses dari perangkat mobile, yang sangat mengurangi pengalaman pengguna.
+
+2. Situs Web Katalog PDF Statis, yang hanya menampilkan katalog dalam format PDF tanpa adaptasi terhadap ukuran layar sering kali tidak responsif. Pengguna perlu membuka dan membaca PDF dengan kesulitan pada perangkat mobile karena tidak ada penyesuaian elemen.
+
+### 3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+
+1. **Margin**, adalah ruang di luar elemen yang memisahkan elemen tersebut dari elemen lain. Ini merupakan jarak antara batas luar elemen dengan elemen-elemen di sekitarnya. Cara kerjanya margin tidak memengaruhi ukuran elemen, tetapi memengaruhi jarak elemen dengan elemen lain. Margin juga dapat menggunakan nilai positif atau negatif. Contoh implementasinya :
+
+    ```bash
+    div {
+        margin: 20px; /* Semua sisi (atas, kanan, bawah, kiri) memiliki margin 20px */
+        margin-top: 10px; /* Margin atas 10px */
+        margin-right: 15px; /* Margin kanan 15px */
+        margin-bottom: 10px; /* Margin bawah 10px */
+        margin-left: 15px; /* Margin kiri 15px */
+    }
+    ```
+2. **Border**, adalah garis yang mengelilingi elemen dan ditempatkan di antara padding dan margin. Border membentuk batas visual dari elemen dan bisa diberi warna, ketebalan, serta gaya (solid, dashed, dotted, dll.). Cara kerjanya border berada tepat di luar padding dan di dalam margin. Border dapat dikustomisasi dengan berbagai gaya dan ukuran. Contoh implementasinya :
+
+    ```bash
+    div {
+        border: 2px solid black; /* Border dengan ketebalan 2px, gaya solid, warna hitam */
+        border-top: 1px dashed red; /* Border atas bergaris putus-putus (dashed) dengan warna merah */
+    }
+
+3. **Padding**, adalah ruang di dalam elemen antara konten elemen (misalnya teks atau gambar) dan batas (border) elemen. Padding memberikan jarak antara konten elemen dengan batas elemen. Cara kerjanya padding ialah memperluas ukuran elemen, karena menambah jarak di dalam elemen tanpa memengaruhi posisi elemen lain. Tidak seperti margin, padding tidak bisa memiliki nilai negatif. contoh implementasinya :
+
+    ```bash
+    div {
+        padding: 20px; /* Semua sisi memiliki padding 20px */
+        padding-top: 10px; /* Padding atas 10px */
+        padding-right: 15px; /* Padding kanan 15px */
+        padding-bottom: 10px; /* Padding bawah 10px */
+        padding-left: 15px; /* Padding kiri 15px */
+    }
+
+### 4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+
+**Flexbox** adalah sistem layout yang dirancang untuk mengatur elemen secara linear dalam satu dimensi, baik itu secara horizontal (row) atau vertikal (column). Flexbox sangat berguna ketika kita ingin membuat tata letak yang fleksibel dan dinamis untuk elemen dalam satu baris atau kolom.
+
+Kegunaan Flexbox:
+1. Flexbox sangat baik digunakan untuk membuat tata letak elemen dalam satu dimensi, seperti navbar horizontal, sidebar vertikal, atau layout kartu-kartu produk.
+2. Kita bisa membuat elemen menyesuaikan lebar atau tinggi berdasarkan ruang yang tersedia, sehingga tata letak tetap responsif dan adaptif tanpa memerlukan pengukuran piksel tetap.
+
+**Grid Layout** adalah sistem tata letak dua dimensi (dua arah) yang lebih canggih daripada Flexbox. Dengan Grid, kita bisa mengatur elemen dalam baris (rows) dan kolom (columns) secara bersamaan, membuatnya lebih cocok untuk tata letak yang kompleks seperti halaman web yang memiliki header, footer, sidebar, dan konten utama.
+
+Kegunaan Grid Layout:
+1. Grid ideal untuk tata letak yang membutuhkan pengaturan elemen dalam baris dan kolom, seperti dashboard, majalah digital, atau halaman blog dengan beberapa konten.
+2. Grid memberikan kontrol penuh terhadap ukuran dan posisi setiap elemen dalam grid, memungkinkan kita untuk mengatur layout yang lebih kompleks dibandingkan Flexbox.
+3. Grid dapat dengan mudah digunakan untuk membuat struktur utama halaman, seperti header, sidebar, konten, dan footer.

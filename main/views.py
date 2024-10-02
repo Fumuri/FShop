@@ -1,12 +1,12 @@
 import datetime
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.urls import reverse
 from django.shortcuts import render, redirect
+from django.shortcuts import reverse
 from main.forms import ProductForm
 from main.models import Product
-from django.http import HttpResponse
 from django.core import serializers
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login
@@ -39,6 +39,29 @@ def create_product(request):
     context = {'form': form}
 
     return render(request, "create_product.html", context)
+
+def edit_product(request, id):
+    # Get isian product berdasarkan id
+    product = Product.objects.get(pk = id)
+
+    # Set isian product sebagai instance dari form
+    form = ProductForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
+
+def delete_product(request, id):
+    # Get product berdasarkan id
+    product = Product.objects.get(pk = id)
+    # Hapus product
+    product.delete()
+    # Kembali ke halaman awal
+    return HttpResponseRedirect(reverse('main:show_main'))
 
 def register(request):
     form = UserCreationForm()

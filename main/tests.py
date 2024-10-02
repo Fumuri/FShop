@@ -17,7 +17,8 @@ class mainTest(TestCase):
     def test_available(self):
         product = Product.objects.create(
             name="Buku",
-            description="Campus",
             price = 100000,
+            description="Campus",
+            quantity = 5,
         )
         self.assertTrue(product.is_available)
