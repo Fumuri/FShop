@@ -648,3 +648,64 @@ Kegunaan Grid Layout:
 1. Grid ideal untuk tata letak yang membutuhkan pengaturan elemen dalam baris dan kolom, seperti dashboard, majalah digital, atau halaman blog dengan beberapa konten.
 2. Grid memberikan kontrol penuh terhadap ukuran dan posisi setiap elemen dalam grid, memungkinkan kita untuk mengatur layout yang lebih kompleks dibandingkan Flexbox.
 3. Grid dapat dengan mudah digunakan untuk membuat struktur utama halaman, seperti header, sidebar, konten, dan footer.
+
+## Tugas Individu 6
+
+### 1. Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+
+Berikut adalah manfaat Javascript dalam pengembangan aplikasi web :
+1. **Interaktivitas**
+
+JavaScript memungkinkan pengembang untuk menambahkan interaktivitas ke halaman web. Elemen seperti tombol, formulir, dan efek animasi dapat berfungsi secara dinamis, memberikan pengalaman pengguna yang lebih menarik.
+
+2. **Pemrosesan Klien**
+
+JavaScript dijalankan di sisi klien, yang berarti bahwa pemrosesan dapat dilakukan tanpa perlu berkomunikasi terus-menerus dengan server. Ini meningkatkan kecepatan dan responsivitas aplikasi, mengurangi waktu muat halaman.
+
+3. **AJAX**
+
+JavaScript mendukung Asynchronous JavaScript and XML (AJAX), yang memungkinkan aplikasi web untuk memuat data secara asinkron tanpa perlu memuat ulang halaman. Ini memungkinkan pengalaman pengguna yang lebih lancar dan efisien.
+
+4. **Kompatibilitas dengan HTML dan CSS**
+
+JavaScript bekerja sama dengan HTML dan CSS untuk menciptakan aplikasi web yang kaya. Ini memungkinkan pengembang untuk mengontrol tampilan dan perilaku elemen web dengan mudah.
+
+5. **Fleksibilitas**
+
+JavaScript dapat digunakan untuk berbagai tujuan, mulai dari pengembangan front-end hingga back-end, pengembangan game, dan bahkan aplikasi berbasis IoT.
+
+### 2. Jelaskan fungsi dari penggunaan `await` ketika kita menggunakan `fetch()`! Apa yang akan terjadi jika kita tidak menggunakan `await`?
+
+Fungsi `await` ketika menggunakan `fetch()`:
+
+1. Ketika kita menggunakan `await` sebelum panggilan `fetch()`, JavaScript akan menunggu hingga operasi fetch selesai dan respons diterima sebelum melanjutkan eksekusi kode berikutnya. Ini membuat kode lebih mudah dibaca dan dipahami karena mengikuti urutan logis.
+
+2. Dengan `await`, kita dapat menulis kode yang menangani Promise (hasil dari `fetch()`) dengan cara yang lebih terstruktur, menghindari penggunaan `.then()` dan `.catch()` yang bisa membuat kode terlihat lebih rumit.
+
+Yang terjadi ketika kita tidak menggunakan `await` :
+
+1. Jika kita tidak menggunakan `await`, panggilan ke `fetch()` akan tetap mengembalikan Promise, tetapi eksekusi kode akan berlanjut tanpa menunggu respons. Ini berarti bahwa kode setelah panggilan `fetch()` dapat dieksekusi bahkan sebelum respons diterima.
+
+2. Jika kita mencoba untuk menggunakan hasil dari `fetch()` (seperti `response.json()`) tanpa menunggu respons, kita akan mendapatkan error karena kita mencoba mengakses data sebelum fetch selesai. Kode tersebut akan mencoba mengakses `json()` pada Promise, bukan pada objek respons yang sebenarnya.
+
+3. Tanpa await, kita kehilangan kontrol atas urutan eksekusi. Jika ada bagian kode yang bergantung pada data dari `fetch()`, itu bisa menyebabkan hasil yang tidak diinginkan atau kondisi balapan (race conditions).
+
+### 3. Mengapa kita perlu menggunakan decorator `csrf_exempt` pada view yang akan digunakan untuk AJAX `POST`?
+
+Penggunaan decorator `@csrf_exempt` pada view yang digunakan untuk AJAX POST dalam Django memungkinkan permintaan POST dilakukan tanpa memvalidasi token CSRF, sehingga memudahkan pengembangan dan integrasi dengan sistem lain. Namun, ini juga membuka risiko terhadap serangan CSRF, sehingga harus digunakan dengan hati-hati. Penting untuk memastikan bahwa mekanisme keamanan lain diterapkan untuk melindungi aplikasi dari akses tidak sah. Sebaiknya, gunakan saja `@csrf_exempt` pada view yang benar-benar perlu dan pastikan untuk melakukan validasi lain untuk menjaga keamanan aplikasi.
+
+### 4. Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+
+Pembersihan data input pengguna juga perlu dilakukan di backend dan frontend karena :
+
+1. **Keamanan**
+
+Data yang datang dari frontend bisa dimanipulasi oleh pengguna jahat. Tanpa pembersihan di backend, aplikasi dapat rentan terhadap serangan seperti SQL Injection, XSS (Cross-Site Scripting), dan serangan lainnya. Selain itu, pengguna dapat dengan mudah melewati validasi frontend (seperti menggunakan alat pengembang browser atau dengan mengirimkan permintaan langsung menggunakan alat seperti Postman). Pembersihan di backend menjamin bahwa hanya data yang valid dan aman yang diproses.
+
+2. **Keberagaman klien**
+
+Aplikasi sering menerima input dari berbagai sumber, termasuk API eksternal atau klien lain. Pembersihan di backend memastikan bahwa semua data, tidak hanya yang berasal dari frontend, diperiksa dan dibersihkan. Juga, tidak semua pengguna atau aplikasi klien akan mengikuti aturan pembersihan yang sama. Dengan melakukan pembersihan di backend, Anda mengendalikan dan menjamin standar kebersihan data.
+
+3. **Kinerja**
+
+Proses pembersihan dan validasi di backend dapat mengurangi beban pada perangkat pengguna, terutama jika pengguna menggunakan perangkat dengan spesifikasi rendah. Ini dapat meningkatkan pengalaman pengguna secara keseluruhan.
